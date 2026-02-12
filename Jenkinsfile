@@ -15,7 +15,7 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                bat 'python --version || sudo apt install python3 python3-pip -y'
+                bat 'python --version || bat pip install python3 python3-pip -y'
                 bat 'pip install --upgrade pip'
                 bat 'pip install -r requirements.txt pytest flake8'
             }
