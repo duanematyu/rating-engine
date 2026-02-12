@@ -15,27 +15,27 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                sh 'python --version || sudo apt install python3 python3-pip -y'
-                sh 'pip install --upgrade pip'
-                sh 'pip install -r requirements.txt pytest flake8'
+                bat 'python --version || sudo apt install python3 python3-pip -y'
+                bat 'pip install --upgrade pip'
+                bat 'pip install -r requirements.txt pytest flake8'
             }
         }
 
         stage('Lint') {
             steps {
-                sh 'flake8 .'
+                bat 'flake8 .'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'pytest'
+                bat 'pytest'
             }
         }
 
         stage('Build Docker') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
+                bat 'docker build -t $IMAGE_NAME .'
             }
         }
 
